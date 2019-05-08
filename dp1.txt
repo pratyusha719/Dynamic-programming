@@ -1,0 +1,72 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    string A,B,C;
+    cin>>A>>B>>C;
+    
+    
+    int n3=C.length();
+    int arr1[A.length()],arr[n3],k=0,arr2[B.length()];
+    
+    for(int i=0;i<A.length();i++)
+    arr1[i]=0;
+    
+    for(int i=0;i<B.length();i++)
+    arr2[i]=0;
+    
+    for(int i=0;i<C.length();i++)
+    arr[i]=0;
+    
+ for(int i=0;i<A.length();i++)
+    {
+        for(int j=k;j<C.length();j++)
+        {
+        if(A[i]==C[j])
+        {arr[j]=1;
+        arr1[i]=1;
+        k=j+1;
+        break;
+        }
+        
+        }
+    }
+    int flag=0;
+    for(int i=0;i<A.length();i++)
+    {if(arr1[i]==0)
+    flag=1;
+    }
+    k=0;
+    for(int i=0;i<B.length();i++)
+    {
+        for(int j=k;j<C.length();j++)
+        {
+            if(arr[j]!=1)
+            {
+        if(B[i]==C[j])
+        {arr[j]=1;
+        arr2[i]=1;
+        k=j+1;
+        break;
+        }
+            }
+        }
+    }
+    
+     for(int i=0;i<B.length();i++)
+    {if(arr2[i]==0)
+    flag=1;
+    }
+  
+    for(int i=0;i<C.length();i++)
+    {if(arr[i]==0)
+    flag=1;
+    }
+    
+    
+    if(flag==0)
+    cout<<1;
+    else
+    cout<<0;
+}
