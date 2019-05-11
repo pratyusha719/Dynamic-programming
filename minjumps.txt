@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define MAX 99999
+int min(int a,int b)
+{
+    if(a>b)
+    return b;
+    else
+    return a;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int steps[n];
+    
+    for(int i=0;i<n;i++)
+    cin>>steps[i];
+    
+    int jumps[n],index[n];
+    for(int i=0;i<n;i++)
+    jumps[i]=MAX;
+    
+    jumps[0]=0;
+    
+    for(int i=1;i<n;i++)
+    {
+        for(int j=0;j<i;j++)
+        {
+            if(steps[j]>=(i-j))
+            {
+                
+                jumps[i]=min(jumps[i],jumps[j]+1);
+            }
+            
+        }
+        
+    }
+    
+    
+    cout<<jumps[n-1];
+}
